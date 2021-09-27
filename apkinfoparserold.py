@@ -3,7 +3,7 @@
 
 import zipfile
 from xml.dom import minidom
-from apkutils.axml import AXMLPrinter
+from axmlparserpy.axmlprinter import AXMLPrinter
 import os
 import sys
 
@@ -68,8 +68,7 @@ def apk_parser(filename):
     '''
     with zipfile.ZipFile(filename, 'r') as file:
         manifest = file.read('AndroidManifest.xml')
-
-    return Manifest(AXMLPrinter(manifest).get_xml())
+    return Manifest(AXMLPrinter(manifest).getBuff())
 
 def parse_apk_info(apkFilePath):
     parser = apk_parser(apkFilePath)
